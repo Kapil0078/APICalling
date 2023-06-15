@@ -1,5 +1,6 @@
 import 'package:api_calling/BasicLevel/api_calling_1.dart';
 import 'package:api_calling/HelperFunction/my_nevigation.dart';
+import 'package:api_calling/Intermediate/API3/api_3_home.dart';
 import 'package:flutter/material.dart';
 
 import 'BasicLevel/api_calling_2.dart';
@@ -64,6 +65,16 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: const Text("API-2"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                nextScreen(
+                  context,
+                  const API3Home(),
+                );
+              },
+              child: const Text("API-3"),
             ),
           ],
         ),

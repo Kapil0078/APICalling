@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'BasicLevel/api_calling_2.dart';
 import 'Intermediate/API4/api_4_home.dart';
 import 'Intermediate/API5/api_5_home.dart';
+import 'Intermediate/API6/api_6_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -97,6 +98,16 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: const Text("API-5"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                nextScreen(
+                  context,
+                  const API6Home(),
+                );
+              },
+              child: const Text("API-6"),
             ),
           ],
         ),

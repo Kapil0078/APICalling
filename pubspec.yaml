@@ -18,7 +18,8 @@ dependencies:
   
   # for api calling 
   http: ^1.0.0
-  dio: ^5.2.1+1 
+  dio: ^5.2.1+1
+  provider: ^6.0.5  
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 class ResponseClass<T> {
-   String message;
-   bool success;
+  String message;
+  bool success;
   T? data;
 
   ResponseClass({

@@ -1,8 +1,11 @@
+import 'package:api_calling/Advanced/API7/service_provider.dart';
 import 'package:api_calling/BasicLevel/api_calling_1.dart';
 import 'package:api_calling/HelperFunction/my_nevigation.dart';
 import 'package:api_calling/Intermediate/API3/api_3_home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'Advanced/API7/api7_home.dart';
 import 'BasicLevel/api_calling_2.dart';
 import 'Intermediate/API4/api_4_home.dart';
 import 'Intermediate/API5/api_5_home.dart';
@@ -17,22 +20,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'API',
-      theme: ThemeData(
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.brown.shade500),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ServiceProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'API',
+        theme: ThemeData(
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.brown.shade500),
+            ),
+          ),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.brown.shade300,
+            elevation: 0.0,
+            centerTitle: true,
           ),
         ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.brown.shade300,
-          elevation: 0.0,
-          centerTitle: true,
-        ),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(),
     );
   }
 }
@@ -108,6 +118,16 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: const Text("API-6"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                nextScreen(
+                  context,
+                  const API7Home(),
+                );
+              },
+              child: const Text("API-7"),
             ),
           ],
         ),

@@ -1,8 +1,7 @@
 import 'dart:developer';
-
-import 'package:api_calling/Advanced/responce_class.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:api_calling/Advanced/responce_class.dart';
 
 class ServiceProvider extends ChangeNotifier {
   final Dio dio = Dio();
@@ -18,6 +17,7 @@ class ServiceProvider extends ChangeNotifier {
     try {
       isLoadingForService = true;
       notifyListeners();
+      await Future.delayed(const Duration(seconds: 0));
       Response response = await dio.get(
         uri,
         options: Options(
@@ -29,6 +29,9 @@ class ServiceProvider extends ChangeNotifier {
           },
         ),
       );
+
+      log("statusCode : ${response.statusCode}");
+      log("Msg : ${response.data["msg"]}");
 
       if (response.statusCode == 200) {
         responseClass.success = true;

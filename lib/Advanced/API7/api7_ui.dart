@@ -1,7 +1,8 @@
+import 'package:api_calling/Advanced/API7/service_class.dart';
 import 'package:flutter/material.dart';
 
 class API7UI extends StatelessWidget {
-  final List<Map<String, dynamic>> services;
+  final List<ServiceClass> services;
   const API7UI({super.key, required this.services});
 
   @override
@@ -30,11 +31,11 @@ class API7UI extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Service : ${service['name']}"),
-                Text("Price : ${service["price"]}"),
-                Text("Service No. : ${service["no"]}"),
-                if (service["tax_id"] != null)
-                  Text("TaxID : ${service["tax_id"] ?? '--'} "),
+                Text("Service : ${service.name}"),
+                Text("Price : ${service.price}"),
+                Text("Service No. : ${service.no}"),
+                if (service.taxId != null)
+                  Text("TaxID : ${service.taxId ?? '--'} "),
                 const SizedBox(height: 10),
                 const Text("Brands"),
                 SizedBox(
@@ -42,9 +43,9 @@ class API7UI extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: service["Brand"].length,
+                    itemCount: service.brands.length,
                     itemBuilder: (context, i) {
-                      final brand = service["Brand"][i];
+                      final brand = service.brands.elementAt(i);
                       return Container(
                         margin: const EdgeInsets.only(right: 10),
                         padding: const EdgeInsets.symmetric(
@@ -59,7 +60,7 @@ class API7UI extends StatelessWidget {
                             width: 0.75,
                           ),
                         ),
-                        child: Text(brand["name"]),
+                        child: Text(brand.name),
                       );
                     },
                   ),
@@ -71,9 +72,9 @@ class API7UI extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: service["Model"].length,
+                    itemCount: service.models.length,
                     itemBuilder: (context, j) {
-                      final model = service["Model"][j];
+                      final model = service.models.elementAt(j);
                       return Container(
                         margin: const EdgeInsets.only(right: 10),
                         padding: const EdgeInsets.symmetric(
@@ -88,7 +89,9 @@ class API7UI extends StatelessWidget {
                             width: 0.75,
                           ),
                         ),
-                        child: Text(model["name"]),
+                        child: Text(
+                          '${model.name} : ${model.brandID}',
+                        ),
                       );
                     },
                   ),
